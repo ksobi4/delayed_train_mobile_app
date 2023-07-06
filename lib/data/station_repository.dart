@@ -11,8 +11,7 @@ class StationRepository {
     required this.client,
   });
 
-  Future<Either<Failure, StationList>> getFullStationName(
-      String rawStation) async {
+  Future<StationList> getFullStationName(String rawStation) async {
     try {
       Response res = await client.dio.get(
         '/station_name',
@@ -20,12 +19,12 @@ class StationRepository {
       );
 
       if (res.statusCode == 200) {
-        return Right(StationList(list: []));
+        return StationList(list: res.data);
       } else {
-        return Left(ServerFailure(message: 'status code = ${res.statusCode}'));
+        throw ServerFailure(message: 'status code = ${res.statusCode}');
       }
     } catch (err) {
-      return Left(ServerFailure(message: 'err = ${err.toString()}'));
+      throw ServerFailure(message: 'err = ${err.toString()}');
     }
   }
 }
