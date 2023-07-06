@@ -1,19 +1,26 @@
 name: delayed_train
 description: A new Flutter project.
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.0.5 <4.0.0'
+  sdk: ">=3.0.5 <4.0.0"
 
 dependencies:
+  auto_route: ^7.7.0
+  dartz: ^0.10.1
+  dio: ^5.2.1+1
   flutter:
     sdk: flutter
+  flutter_dotenv: ^5.1.0
+  get_it: ^7.6.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  auto_route_generator: ^7.2.0
+  build_runner: ^2.4.6
 
 flutter:
   uses-material-design: true
