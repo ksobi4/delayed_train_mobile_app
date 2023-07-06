@@ -1,17 +1,10 @@
-import 'package:delayed_train/models/train_on_station.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 
 class Station {
-  String date;
-  String time;
-  String stationName;
-  String stationId;
-  List<TrainOnStation> list;
-
+  String id;
+  String name;
   Station({
-    required this.date,
-    required this.time,
-    required this.stationName,
-    required this.stationId,
-    required this.list,
+    required this.id,
+    required this.name,
   });
 }
