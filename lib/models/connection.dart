@@ -3,12 +3,15 @@
 import 'dart:ffi';
 
 import 'package:delayed_train/models/connection_part.dart';
+import 'package:json_annotation/json_annotation.dart';
+part 'connection.g.dart';
 
+@JsonSerializable(explicitToJson: true)
 class Connection {
   String startTime;
   String endTime;
   String travelTime;
-  Int amountOfChanges;
+  String amountOfChanges;
   List<ConnectionPart> trainList;
 
   Connection({
@@ -18,4 +21,8 @@ class Connection {
     required this.amountOfChanges,
     required this.trainList,
   });
+
+  factory Connection.fromJson(Map<String, dynamic> json) =>
+      _$ConnectionFromJson(json);
+  Map<String, dynamic> toJson() => _$ConnectionToJson(this);
 }

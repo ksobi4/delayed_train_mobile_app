@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:delayed_train/core/dio_client.dart';
 import 'package:delayed_train/core/error/failures.dart';
+import 'package:delayed_train/models/station_list.dart';
 import 'package:dio/dio.dart';
 
 class StationRepository {
@@ -10,7 +11,8 @@ class StationRepository {
     required this.client,
   });
 
-  Future<Either<Failure, String>> getFullStationName(String rawStation) async {
+  Future<Either<Failure, StationList>> getFullStationName(
+      String rawStation) async {
     try {
       Response res = await client.dio.get(
         '/station_name',
@@ -18,7 +20,7 @@ class StationRepository {
       );
 
       if (res.statusCode == 200) {
-        return Right('');
+        return Right(StationList(list: []));
       } else {
         return Left(ServerFailure(message: 'status code = ${res.statusCode}'));
       }

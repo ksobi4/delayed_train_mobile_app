@@ -46,6 +46,7 @@ app.*.map.json
 
 #generate
 *.gr.dart
+*.g.dart
 
 #env
 .env.dev
