@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:delayed_train/core/dio_client.dart';
 import 'package:delayed_train/core/error/failures.dart';
@@ -19,11 +21,12 @@ class StationRepository {
       );
 
       if (res.statusCode == 200) {
-        return StationList(list: res.data);
+        return StationList.fromJson(res.data);
       } else {
         throw ServerFailure(message: 'status code = ${res.statusCode}');
       }
     } catch (err) {
+      log(err.toString());
       throw ServerFailure(message: 'err = ${err.toString()}');
     }
   }
